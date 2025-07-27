@@ -5,18 +5,18 @@ struct StartView: View {
     @State private var showContentView: Bool = false
 
     var body: some View {
-        // MUDA AQUI: Usamos NavigationView em vez de NavigationStack
+        // NOTE: Using NavigationView instead of NavigationStack for broader compatibility (e.g., iOS 15 and earlier)
         NavigationView {
             VStack(spacing: 30) {
                 Spacer()
 
-                Text("Bem-vindo ao Monitor de Esteira")
+                Text("Welcome to the Treadmill Monitor")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .padding()
 
-                Text("Pronto para começar seu treino?")
+                Text("Ready to start your workout?")
                     .font(.title2)
                     .foregroundColor(.gray)
 
@@ -25,7 +25,7 @@ struct StartView: View {
                 Button(action: {
                     showContentView = true
                 }) {
-                    Text("Iniciar Treino")
+                    Text("Start Workout")
                         .font(.headline)
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -35,16 +35,16 @@ struct StartView: View {
                 }
                 .padding(.horizontal, 40)
                 
-                // MUDA AQUI: Usamos NavigationLink invisível ou sheets com o NavigationView
-                // Para a navegação push, podemos usar um NavigationLink
+                // NOTE: Using an invisible NavigationLink or sheets with NavigationView
+                // For push navigation, we can use a NavigationLink
                 NavigationLink(destination: ContentView(), isActive: $showContentView) {
-                    EmptyView() // Oculta o link visível, pois o botão já o aciona
+                    EmptyView() // Hides the visible link, as the button already triggers it
                 }
-                .hidden() // Garante que o NavigationLink não seja visível
+                .hidden() // Ensures the NavigationLink is not visible
                 
                 Spacer()
             }
-            .navigationTitle("Início")
+            .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
         }
     }

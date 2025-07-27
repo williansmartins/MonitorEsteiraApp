@@ -1,7 +1,7 @@
 import SwiftUI
 import CoreBluetooth
 
-// Seu HeartRateManager (sem alterações neste trecho, apenas adicionamos o disconnect antes)
+// Your HeartRateManager (no changes here, we just added the disconnect method previously)
 class HeartRateManager: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     private var centralManager: CBCentralManager!
     private var heartRatePeripheral: CBPeripheral?
@@ -15,16 +15,16 @@ class HeartRateManager: NSObject, ObservableObject, CBCentralManagerDelegate, CB
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
-            print("Bluetooth Ligado: Escaneando...")
+            print("Bluetooth is On: Scanning...")
             centralManager.scanForPeripherals(withServices: [CBUUID(string: "180D")], options: nil)
         } else {
-            print("Bluetooth não disponível")
+            print("Bluetooth is not available")
         }
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,
                         advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print("Sensor encontrado: \(peripheral.name ?? "Desconhecido")")
+        print("Sensor found: \(peripheral.name ?? "Unknown")")
         heartRatePeripheral = peripheral
         heartRatePeripheral?.delegate = self
         centralManager.stopScan()
@@ -32,14 +32,14 @@ class HeartRateManager: NSObject, ObservableObject, CBCentralManagerDelegate, CB
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("Conectado ao sensor")
+        print("Connected to sensor")
         peripheral.discoverServices([CBUUID(string: "180D")])
     }
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         guard let services = peripheral.services else { return }
         for service in services {
-            print("Serviço encontrado: \(service.uuid)")
+            print("Service found: \(service.uuid)")
             peripheral.discoverCharacteristics([CBUUID(string: "2A37")], for: service)
         }
     }
@@ -48,7 +48,7 @@ class HeartRateManager: NSObject, ObservableObject, CBCentralManagerDelegate, CB
         guard let characteristics = service.characteristics else { return }
         for characteristic in characteristics {
             if characteristic.uuid == CBUUID(string: "2A37") {
-                print("Característica de batimento encontrada. Subscribing...")
+                print("Heart rate characteristic found. Subscribing...")
                 peripheral.setNotifyValue(true, for: characteristic)
             }
         }
@@ -72,11 +72,11 @@ class HeartRateManager: NSObject, ObservableObject, CBCentralManagerDelegate, CB
         }
     }
     
-    // Método para desconectar o periférico e parar o escaneamento
+    // Method to disconnect the peripheral and stop scanning
     func disconnect() {
         if let peripheral = heartRatePeripheral {
             centralManager.cancelPeripheralConnection(peripheral)
-            print("Desconectado do sensor.")
+            print("Disconnected from sensor.")
         }
         centralManager.stopScan()
         heartRate = 0
@@ -84,7 +84,7 @@ class HeartRateManager: NSObject, ObservableObject, CBCentralManagerDelegate, CB
     }
 }
 
-// Tela principal com SwiftUI
+// Main screen with SwiftUI
 struct ContentView: View {
     @StateObject var hrManager = HeartRateManager()
     
@@ -94,14 +94,14 @@ struct ContentView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    // --- NOVAS PROPRIEDADES PARA O TIMER ---
-    @State private var timeElapsed: TimeInterval = 0 // Armazena o tempo em segundos
-    @State private var timer: Timer? = nil // O timer real
-    // --- FIM NOVAS PROPRIEDADES ---
+    // --- NEW PROPERTIES FOR THE TIMER ---
+    @State private var timeElapsed: TimeInterval = 0 // Stores time in seconds
+    @State private var timer: Timer? = nil // The actual timer
+    // --- END NEW PROPERTIES ---
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Batimentos Cardíacos")
+            Text("Heart Rate")
                 .font(.title)
             
             Text("\(hrManager.heartRate) BPM")
@@ -109,23 +109,23 @@ struct ContentView: View {
                 .bold()
                 .foregroundColor(.red)
             
-            // --- EXIBIÇÃO DO TIMER ---
-            Text("Duração do Treino: \(formattedTime)")
+            // --- TIMER DISPLAY ---
+            Text("Workout Duration: \(formattedTime)")
                 .font(.title2)
                 .padding(.top, 10)
-            // --- FIM EXIBIÇÃO DO TIMER ---
+            // --- END TIMER DISPLAY ---
             
             Spacer()
             
-            // --- Seção de Botões de Velocidade ---
-            Text("Definir Velocidade:")
+            // --- Speed Buttons Section ---
+            Text("Set Treadmill Speed:")
                 .font(.headline)
             
             HStack(spacing: 10) {
                 ForEach(speeds, id: \.self) { speed in
                     Button(action: {
                         self.selectedSpeed = speed
-                        print("Velocidade selecionada: \(speed)")
+                        print("Speed selected: \(speed)")
                     }) {
                         Text("\(speed)")
                             .font(.title2)
@@ -141,21 +141,21 @@ struct ContentView: View {
             }
             
             if let speed = selectedSpeed {
-                Text("Velocidade atual: \(speed)")
+                Text("Current Speed: \(speed)")
                     .font(.title3)
                     .padding(.top, 10)
             }
-            // --- Fim da Seção de Botões de Velocidade ---
+            // --- End Speed Buttons Section ---
             
             Spacer()
             
-            // Botão de Parar
+            // Stop Button
             Button(action: {
-                stopTimer() // Para o timer
+                stopTimer() // Stop the timer
                 hrManager.disconnect()
                 dismiss()
             }) {
-                Text("Parar Treino")
+                Text("Stop Workout")
                     .font(.headline)
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -167,26 +167,26 @@ struct ContentView: View {
             
         }
         .padding()
-        .navigationTitle("Treino Ativo")
+        .navigationTitle("Active Workout")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .onAppear(perform: startTimer) // Inicia o timer quando a tela aparece
-        .onDisappear(perform: stopTimer) // Para o timer quando a tela desaparece
+        .onAppear(perform: startTimer) // Start timer when the screen appears
+        .onDisappear(perform: stopTimer) // Stop timer when the screen disappears
     }
     
-    // --- NOVOS MÉTODOS PARA O TIMER ---
+    // --- NEW METHODS FOR THE TIMER ---
     private func startTimer() {
-        // Invalida qualquer timer existente antes de criar um novo
+        // Invalidate any existing timer before creating a new one
         stopTimer()
-        timeElapsed = 0 // Reseta o tempo ao iniciar
+        timeElapsed = 0 // Reset time upon starting
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.timeElapsed += 1
         }
     }
     
     private func stopTimer() {
-        timer?.invalidate() // Para o timer
-        timer = nil // Limpa a referência
+        timer?.invalidate() // Stop the timer
+        timer = nil // Clear the timer reference
     }
     
     private var formattedTime: String {
@@ -195,13 +195,13 @@ struct ContentView: View {
         let seconds = Int(timeElapsed) % 60
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
-    // --- FIM NOVOS MÉTODOS ---
+    // --- END NEW METHODS ---
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        // O Preview precisa de um NavigationStack para simular o ambiente de navegação
-        NavigationView { // Ou NavigationStack se seu target for iOS 16+
+        // The preview needs a NavigationStack to simulate the navigation environment
+        NavigationView { // Or NavigationStack if your target is iOS 16+
             ContentView()
         }
     }
