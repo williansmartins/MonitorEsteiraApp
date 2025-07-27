@@ -1,0 +1,46 @@
+# Xcode
+.DS_Store
+/build/
+.xcworkspace
+xcuserdata/
+DerivedData/
+.xcodeproj/project.xcworkspace
+.xcodeproj/xcuserdata/
+.swiftpm/
+*.xcodeproj/xcuserdata/
+*.xcuserdatad/
+*.o
+*.d
+*.swiftmodule
+*.swiftdoc
+*.swn
+*.swp
+*.pyc
+*.localized
+
+# Pods
+/Pods
+
+# Carthage
+/Carthage/Build
+
+# Swift Package Manager
+.build/
+
+# CocoaPods
+Pods/
+
+# debs
+*.deb
+
+# misc
+.idea/
+.vscode/
+
+# Optional: If you want to ignore all .xcodeproj files except for the main one
+# If your project has multiple .xcodeproj files (e.g., for extensions), be careful with this
+# *.xcodeproj
+
+# Optional: if you want to include specific files from DerivedData,
+# you can uncomment the /DerivedData/ line and add exceptions below
+# !/DerivedData/*.dSYM # Example to keep dSYMs for crash reporting

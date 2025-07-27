@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE5C4BFD2E35ED73008C7B1D /* app2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C4BFC2E35ED73008C7B1D /* app2App.swift */; };
+		CE39702D2E36B7A50072A9ED /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39702C2E36B7A50072A9ED /* StartView.swift */; };
+		CE5C4BFD2E35ED73008C7B1D /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C4BFC2E35ED73008C7B1D /* Main.swift */; };
 		CE5C4BFF2E35ED73008C7B1D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C4BFE2E35ED73008C7B1D /* ContentView.swift */; };
 		CE5C4C012E35ED75008C7B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C4C002E35ED75008C7B1D /* Assets.xcassets */; };
 		CE5C4C042E35ED75008C7B1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C4C032E35ED75008C7B1D /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE5C4BF92E35ED73008C7B1D /* app2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE5C4BFC2E35ED73008C7B1D /* app2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app2App.swift; sourceTree = "<group>"; };
+		CE39702A2E36AFC90072A9ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE39702C2E36B7A50072A9ED /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		CE5C4BF92E35ED73008C7B1D /* MonitorCardiaco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonitorCardiaco.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE5C4BFC2E35ED73008C7B1D /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		CE5C4BFE2E35ED73008C7B1D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE5C4C002E35ED75008C7B1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5C4C032E35ED75008C7B1D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -35,7 +38,8 @@
 		CE5C4BF02E35ED73008C7B1D = {
 			isa = PBXGroup;
 			children = (
-				CE5C4BFB2E35ED73008C7B1D /* app2 */,
+				CE39702A2E36AFC90072A9ED /* Info.plist */,
+				CE5C4BFB2E35ED73008C7B1D /* src */,
 				CE5C4BFA2E35ED73008C7B1D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,20 +47,21 @@
 		CE5C4BFA2E35ED73008C7B1D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE5C4BF92E35ED73008C7B1D /* app2.app */,
+				CE5C4BF92E35ED73008C7B1D /* MonitorCardiaco.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CE5C4BFB2E35ED73008C7B1D /* app2 */ = {
+		CE5C4BFB2E35ED73008C7B1D /* src */ = {
 			isa = PBXGroup;
 			children = (
-				CE5C4BFC2E35ED73008C7B1D /* app2App.swift */,
+				CE5C4BFC2E35ED73008C7B1D /* Main.swift */,
 				CE5C4BFE2E35ED73008C7B1D /* ContentView.swift */,
 				CE5C4C002E35ED75008C7B1D /* Assets.xcassets */,
 				CE5C4C022E35ED75008C7B1D /* Preview Content */,
+				CE39702C2E36B7A50072A9ED /* StartView.swift */,
 			);
-			path = app2;
+			path = src;
 			sourceTree = "<group>";
 		};
 		CE5C4C022E35ED75008C7B1D /* Preview Content */ = {
@@ -70,9 +75,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CE5C4BF82E35ED73008C7B1D /* app2 */ = {
+		CE5C4BF82E35ED73008C7B1D /* MonitorCardiaco */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE5C4C072E35ED75008C7B1D /* Build configuration list for PBXNativeTarget "app2" */;
+			buildConfigurationList = CE5C4C072E35ED75008C7B1D /* Build configuration list for PBXNativeTarget "MonitorCardiaco" */;
 			buildPhases = (
 				CE5C4BF52E35ED73008C7B1D /* Sources */,
 				CE5C4BF62E35ED73008C7B1D /* Frameworks */,
@@ -82,9 +87,9 @@
 			);
 			dependencies = (
 			);
-			name = app2;
+			name = MonitorCardiaco;
 			productName = app2;
-			productReference = CE5C4BF92E35ED73008C7B1D /* app2.app */;
+			productReference = CE5C4BF92E35ED73008C7B1D /* MonitorCardiaco.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +107,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CE5C4BF42E35ED73008C7B1D /* Build configuration list for PBXProject "app2" */;
+			buildConfigurationList = CE5C4BF42E35ED73008C7B1D /* Build configuration list for PBXProject "MonitorCardiaco" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +120,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE5C4BF82E35ED73008C7B1D /* app2 */,
+				CE5C4BF82E35ED73008C7B1D /* MonitorCardiaco */,
 			);
 		};
 /* End PBXProject section */
@@ -137,8 +142,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE39702D2E36B7A50072A9ED /* StartView.swift in Sources */,
 				CE5C4BFF2E35ED73008C7B1D /* ContentView.swift in Sources */,
-				CE5C4BFD2E35ED73008C7B1D /* app2App.swift in Sources */,
+				CE5C4BFD2E35ED73008C7B1D /* Main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,10 +272,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"app2/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"src/Preview Content\"";
 				DEVELOPMENT_TEAM = 4XDT2ZJRY2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Este aplicativo precisa acessar o Bluetooth para se conectar a dispositivos próximos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -280,8 +287,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pwms.app2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = pwms.monitor.cardiaco;
+				PRODUCT_NAME = MonitorCardiaco;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -295,10 +302,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"app2/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"src/Preview Content\"";
 				DEVELOPMENT_TEAM = 4XDT2ZJRY2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Este aplicativo precisa acessar o Bluetooth para se conectar a dispositivos próximos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -309,8 +317,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pwms.app2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = pwms.monitor.cardiaco;
+				PRODUCT_NAME = MonitorCardiaco;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -320,7 +328,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CE5C4BF42E35ED73008C7B1D /* Build configuration list for PBXProject "app2" */ = {
+		CE5C4BF42E35ED73008C7B1D /* Build configuration list for PBXProject "MonitorCardiaco" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE5C4C052E35ED75008C7B1D /* Debug */,
@@ -329,7 +337,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE5C4C072E35ED75008C7B1D /* Build configuration list for PBXNativeTarget "app2" */ = {
+		CE5C4C072E35ED75008C7B1D /* Build configuration list for PBXNativeTarget "MonitorCardiaco" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE5C4C082E35ED75008C7B1D /* Debug */,

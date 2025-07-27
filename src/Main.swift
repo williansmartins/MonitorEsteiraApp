@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct app2App: App {
+struct main: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StartView() // Agora o app começa pela StartView
         }
     }
 }
